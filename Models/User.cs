@@ -18,11 +18,17 @@ namespace SocketServer.Models
         {
             this.Folders = new HashSet<Folder>();
         }
-    
+        public User(string detail, bool status, string macAddress)
+        {
+            this.ID_User = macAddress;
+            this.Detail = detail;
+            this.Status = status;
+            this.MacAddress = macAddress;
+        }
         public string ID_User { get; set; }
         public string Detail { get; set; }
         public Nullable<bool> Status { get; set; }
-        public string IPAddress { get; set; }
+        public string MacAddress { get; set; }
     
         public virtual ICollection<Folder> Folders { get; set; }
     }

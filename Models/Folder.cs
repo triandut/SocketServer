@@ -18,9 +18,14 @@ namespace SocketServer.Models
         {
             this.FileDetails = new HashSet<FileDetail>();
         }
-    
-        public string ID_Folder { get; set; }
-        public Nullable<System.DateTime> Time { get; set; }
+        public Folder(string time, string type, string id_user)
+        {
+            this.Time = time;
+            this.Type = type;
+            this.ID_User = id_user;
+        }
+        public int ID_Folder { get; set; }
+        public string Time { get; set; }
         public string Type { get; set; }
         public string ID_User { get; set; }
     

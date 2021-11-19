@@ -14,10 +14,17 @@ namespace SocketServer.Models
     
     public partial class FileDetail
     {
+        public FileDetail(string link, string time, int id_folder)
+        {
+            this.ID_Detail = link;
+            this.Link = link;
+            this.Time = time;
+            this.ID_Folder = id_folder;
+        }
         public string ID_Detail { get; set; }
         public string Link { get; set; }
-        public Nullable<System.DateTime> Time { get; set; }
-        public string ID_Folder { get; set; }
+        public string Time { get; set; }
+        public Nullable<int> ID_Folder { get; set; }
     
         public virtual Folder Folder { get; set; }
     }

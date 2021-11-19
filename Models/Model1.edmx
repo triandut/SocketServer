@@ -9,17 +9,17 @@
           <Key>
             <PropertyRef Name="ID_Detail" />
           </Key>
-          <Property Name="ID_Detail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Detail" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="Link" Type="text" />
-          <Property Name="Time" Type="datetime" />
-          <Property Name="ID_Folder" Type="nvarchar" MaxLength="50" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_Folder" Type="int" />
         </EntityType>
         <EntityType Name="Folder">
           <Key>
             <PropertyRef Name="ID_Folder" />
           </Key>
-          <Property Name="ID_Folder" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Time" Type="datetime" />
+          <Property Name="ID_Folder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" />
           <Property Name="ID_User" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -40,7 +40,7 @@
           <Property Name="ID_User" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Detail" Type="nvarchar" MaxLength="255" />
           <Property Name="Status" Type="bit" />
-          <Property Name="IPAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="MacAddress" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_FileDetail_Folder">
           <End Role="Folder" Type="Self.Folder" Multiplicity="0..1" />
@@ -89,18 +89,18 @@
           <Key>
             <PropertyRef Name="ID_Detail" />
           </Key>
-          <Property Name="ID_Detail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Detail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Time" Type="DateTime" Precision="3" />
-          <Property Name="ID_Folder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Folder" Type="Int32" />
           <NavigationProperty Name="Folder" Relationship="Self.FK_FileDetail_Folder" FromRole="FileDetail" ToRole="Folder" />
         </EntityType>
         <EntityType Name="Folder">
           <Key>
             <PropertyRef Name="ID_Folder" />
           </Key>
-          <Property Name="ID_Folder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="ID_Folder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="FileDetails" Relationship="Self.FK_FileDetail_Folder" FromRole="Folder" ToRole="FileDetail" />
@@ -123,7 +123,7 @@
           <Property Name="ID_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Detail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" />
-          <Property Name="IPAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MacAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Folders" Relationship="Self.FK_Folder_Folder" FromRole="User" ToRole="Folder" />
         </EntityType>
         <Association Name="FK_FileDetail_Folder">
@@ -150,7 +150,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DB_PBL4Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB_PBL4Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="FileDetails" EntityType="Self.FileDetail" />
           <EntitySet Name="Folders" EntityType="Self.Folder" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
@@ -169,7 +169,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB_PBL4ModelStoreContainer" CdmEntityContainer="DB_PBL4Entities">
+        <EntityContainerMapping StorageEntityContainer="DB_PBL4ModelStoreContainer" CdmEntityContainer="DB_PBL4Entities1">
           <EntitySetMapping Name="FileDetails">
             <EntityTypeMapping TypeName="DB_PBL4Model.FileDetail">
               <MappingFragment StoreEntitySet="FileDetail">
@@ -207,7 +207,7 @@
                 <ScalarProperty Name="ID_User" ColumnName="ID_User" />
                 <ScalarProperty Name="Detail" ColumnName="Detail" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -13,10 +13,10 @@ namespace SocketServer.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DB_PBL4Entities : DbContext
+    public partial class DB_PBL4Entities1 : DbContext
     {
-        public DB_PBL4Entities()
-            : base("name=DB_PBL4Entities")
+        public DB_PBL4Entities1()
+            : base("name=DB_PBL4Entities1")
         {
         }
     
